@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Information Portal – BIT ECE</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="college-brand">
+        <div class="college-logo" aria-label="BIT Logo">🎓</div>
+        <div class="college-info">
+          <span class="college-name">Bangalore Institute of Technology</span>
+          <span class="college-sub">Dept. of Electronics &amp; Communication Engineering · VTU Affiliated</span>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#profile" class="nav-link">Profile</a>
+        <a href="#academics" class="nav-link">Academics</a>
+        <a href="#attendance" class="nav-link">Attendance</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#placement" class="nav-link">Placement</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── HERO / PROFILE CARD ── -->
+  <section id="profile" class="hero-section">
+    <div class="hero-bg-grid"></div>
+    <div class="container">
+      <div class="profile-card animate-in">
+
+        <div class="profile-photo-wrap">
+          <div class="profile-photo" id="profilePhoto">
+            <span class="photo-placeholder" id="photoPlaceholder">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="30" r="18" fill="currentColor" opacity="0.3"/>
+                <ellipse cx="40" cy="68" rx="28" ry="16" fill="currentColor" opacity="0.2"/>
+              </svg>
+              <span>Photo</span>
+            </span>
+            <img id="photoImg" src="" alt="Student Photo" style="display:none;" />
+          </div>
+          <label class="upload-btn" for="photoUpload" title="Upload Photo">
+            <input type="file" id="photoUpload" accept="image/*" hidden />
+            📷 Upload
+          </label>
+        </div>
+
+        <div class="profile-details">
+          <div class="usn-badge" id="displayUsn">1BIxECxxx</div>
+          <h1 class="student-name" id="displayName">Student Name</h1>
+          <p class="dept-sem" id="displayDeptSem">Electronics &amp; Communication Engineering · Semester —</p>
+
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-label">Date of Birth</span>
+              <span class="info-value" id="displayDob">—</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Contact</span>
+              <span class="info-value" id="displayContact">—</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">Email</span>
+              <span class="info-value" id="displayEmail">—</span>
+            </div>
+            <div class="info-item info-item--wide">
+              <span class="info-label">Address</span>
+              <span class="info-value" id="displayAddress">—</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="edit-btn" id="editBtn" onclick="openModal()">✏️ Edit Details</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACADEMICS ── -->
+  <section id="academics" class="section">
+    <div class="container">
+      <h2 class="section-title">Academic Performance</h2>
+      <div class="academics-grid">
+        <div class="cgpa-card animate-in">
+          <span class="cgpa-label">Overall CGPA</span>
+          <div class="cgpa-ring">
+            <svg viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="50"/>
+              <circle class="ring-fill" id="cgpaRing" cx="60" cy="60" r="50"
+                      stroke-dasharray="314" stroke-dashoffset="314"/>
+            </svg>
+            <span class="cgpa-value" id="displayCgpa">—</span>
+          </div>
+          <span class="cgpa-max">out of 10.0</span>
+        </div>
+
+        <div class="marks-table-wrap animate-in">
+          <table class="marks-table">
+            <thead>
+              <tr>
+                <th>Semester</th>
+                <th>Subjects</th>
+                <th>Marks / Grade</th>
+              </tr>
+            </thead>
+            <tbody id="marksBody">
+              <tr><td colspan="3" class="empty-row">No marks added yet.</td></tr>
+            </tbody>
+          </table>
+          <button class="add-row-btn" onclick="addMarksRow()">+ Add Semester</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ATTENDANCE ── -->
+  <section id="attendance" class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">Attendance Details</h2>
+      <div class="attendance-grid" id="attendanceGrid">
+        <!-- Cards injected by JS -->
+      </div>
+      <button class="add-row-btn" onclick="addAttendanceCard()">+ Add Subject</button>
+    </div>
+  </section>
+
+  <!-- ── ACHIEVEMENTS ── -->
+  <section id="achievements" class="section">
+    <div class="container">
+      <h2 class="section-title">Achievements &amp; Certifications</h2>
+      <div class="achievements-list" id="achievementsList">
+        <div class="achievement-empty">No achievements added yet.</div>
+      </div>
+      <button class="add-row-btn" onclick="addAchievement()">+ Add Achievement</button>
+    </div>
+  </section>
+
+  <!-- ── PLACEMENT ── -->
+  <section id="placement" class="section section--alt">
+    <div class="container">
+      <h2 class="section-title">Placement Details</h2>
+      <div class="placement-card animate-in" id="placementCard">
+        <div class="placement-status" id="placementStatus">
+          <span class="status-dot status-dot--pending"></span>
+          <span>Not yet placed</span>
+        </div>
+        <div class="placement-details" id="placementDetails" style="display:none;">
+          <div class="placement-info-row"><span>Company</span><strong id="dispCompany">—</strong></div>
+          <div class="placement-info-row"><span>Role</span><strong id="dispRole">—</strong></div>
+          <div class="placement-info-row"><span>Package</span><strong id="dispPackage">—</strong></div>
+          <div class="placement-info-row"><span>Offer Date</span><strong id="dispOfferDate">—</strong></div>
+        </div>
+        <button class="edit-btn" style="margin-top:1.5rem;" onclick="openPlacementModal()">✏️ Edit Placement</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <p>Essentials of Information Technology · BESC204E &nbsp;|&nbsp; Bangalore Institute of Technology &nbsp;|&nbsp; ECE Department</p>
+    <p class="footer-sub">Submission Deadline: <strong>10th June 2026</strong></p>
+  </footer>
+
+  <!-- ══ EDIT PROFILE MODAL ══ -->
+  <div class="modal-overlay" id="editModal" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 class="modal-title">Edit Student Details</h3>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Full Name</label>
+          <input type="text" id="inputName" placeholder="e.g. Arjun Kumar" />
+        </div>
+        <div class="form-row">
+          <label>USN / Roll Number</label>
+          <input type="text" id="inputUsn" placeholder="e.g. 1BI22EC042" />
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label>Department</label>
+            <input type="text" id="inputDept" placeholder="ECE" />
+          </div>
+          <div>
+            <label>Semester</label>
+            <select id="inputSem">
+              <option value="">Select</option>
+              <option>1st</option><option>2nd</option><option>3rd</option>
+              <option>4th</option><option>5th</option><option>6th</option>
+              <option>7th</option><option>8th</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row two-col">
+          <div>
+            <label>Date of Birth</label>
+            <input type="date" id="inputDob" />
+          </div>
+          <div>
+            <label>Contact Number</label>
+            <input type="tel" id="inputContact" placeholder="+91 XXXXX XXXXX" />
+          </div>
+        </div>
+        <div class="form-row">
+          <label>Email ID</label>
+          <input type="email" id="inputEmail" placeholder="student@bit.edu.in" />
+        </div>
+        <div class="form-row">
+          <label>Address</label>
+          <textarea id="inputAddress" rows="2" placeholder="City, State, PIN"></textarea>
+        </div>
+        <div class="form-row">
+          <label>Overall CGPA</label>
+          <input type="number" id="inputCgpa" min="0" max="10" step="0.01" placeholder="e.g. 8.75" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn-save" onclick="saveProfile()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PLACEMENT MODAL ══ -->
+  <div class="modal-overlay" id="placementModal" onclick="closePlacementOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closePlacementModal()">✕</button>
+      <h3 class="modal-title">Edit Placement Details</h3>
+      <div class="modal-body">
+        <div class="form-row">
+          <label>Placement Status</label>
+          <select id="inputPlaced">
+            <option value="no">Not Yet Placed</option>
+            <option value="yes">Placed</option>
+          </select>
+        </div>
+        <div id="placementFields">
+          <div class="form-row">
+            <label>Company Name</label>
+            <input type="text" id="inputCompany" placeholder="e.g. Infosys" />
+          </div>
+          <div class="form-row two-col">
+            <div>
+              <label>Role / Designation</label>
+              <input type="text" id="inputRole" placeholder="e.g. Systems Engineer" />
+            </div>
+            <div>
+              <label>Package (LPA)</label>
+              <input type="text" id="inputPackage" placeholder="e.g. 6.5 LPA" />
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Offer Date</label>
+            <input type="date" id="inputOfferDate" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closePlacementModal()">Cancel</button>
+        <button class="btn-save" onclick="savePlacement()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
