@@ -343,25 +343,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add sample data on first visit
   if (!state.name && !localStorage.getItem('bitStudentData')) {
-    state.name    = 'Arjun Kumar';
-    state.usn     = '1BI22EC042';
+    state.name    = 'Gurusmaran Raghavan';
+    state.usn     = '1BI25EC046';
     state.dept    = 'Electronics & Communication Engineering';
-    state.sem     = '4th';
-    state.contact = '+91 98765 43210';
-    state.email   = '1bi22ec042@bit.edu.in';
-    state.address = 'No. 12, 3rd Cross, Rajajinagar, Bengaluru – 560010';
-    state.dob     = '2004-07-15';
-    state.cgpa    = 8.72;
+    state.sem     = '2nd';
+    state.contact = '+91 93800 75089';va
+    state.email   = 'gurusmaranr1@gmail.com';
+    state.address = 'Bengaluru,Karnataka,India';
+    state.dob     = '2007-03-03';
+    state.cgpa    = 9.5;
     state.marks   = [
-      { id: 1, sem: 'Sem 1', subjects: 'Math, Physics, C-Programming, EEE', marks: 'SGPA: 8.4' },
-      { id: 2, sem: 'Sem 2', subjects: 'Math II, Chemistry, DSA, Electronics', marks: 'SGPA: 8.9' },
-      { id: 3, sem: 'Sem 3', subjects: 'Signals, Networks, Microprocessors, VLSI', marks: 'SGPA: 8.6' },
+      { id: 1, sem: 'Sem 1', subjects: 'Math, Chemistry, C-Programming, IEE', marks: 'SGPA: 9.5' },
+      { id: 2, sem: 'Sem 2', subjects: 'Math II, Physics, EIT Electronics', marks: 'SGPA: 9.5' },
     ];
     state.attendance = [
-      { id: 1, subject: 'Analog Circuits',   attended: 42, total: 48 },
-      { id: 2, subject: 'Digital Systems',   attended: 38, total: 48 },
-      { id: 3, subject: 'Control Systems',   attended: 34, total: 48 },
-      { id: 4, subject: 'Electromagnetic',   attended: 45, total: 48 },
+      { id: 1, subject: 'EIT',   attended: 48, total: 48 },
+      { id: 2, subject: 'FEC',   attended: 48, total: 48 },
+      { id: 3, subject: 'MATHEMATICS',   attended: 48, total: 48 },
+      { id: 4, subject: 'PHYSICS',   attended: 45, total: 48 },
     ];
     state.achievements = [
       { id: 1, icon: '🏆', title: 'IEEE Paper Presentation – 1st Prize', desc: 'IEEE ICIT National Conference, BIT Bengaluru', date: 'March 2025' },
