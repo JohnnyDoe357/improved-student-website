@@ -343,15 +343,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Add sample data on first visit
   if (!state.name && !localStorage.getItem('bitStudentData')) {
-    state.name    = 'Gurusmaran R';
-    state.usn     = '1BI25EC046n
+    state.name    = 'Arjun Kumar';
+    state.usn     = '1BI22EC042';
     state.dept    = 'Electronics & Communication Engineering';
-    state.sem     = '2nd';
-    state.contact = '+91 93800 75089';
-    state.email   = 'Gurusmaranr1@gmail.com';
+    state.sem     = '4th';
+    state.contact = '+91 98765 43210';
+    state.email   = '1bi22ec042@bit.edu.in';
     state.address = 'No. 12, 3rd Cross, Rajajinagar, Bengaluru – 560010';
-    state.dob     = '2007-05-03';
-    state.cgpa    = 9.50;
+    state.dob     = '2004-07-15';
+    state.cgpa    = 8.72;
     state.marks   = [
       { id: 1, sem: 'Sem 1', subjects: 'Math, Physics, C-Programming, EEE', marks: 'SGPA: 8.4' },
       { id: 2, sem: 'Sem 2', subjects: 'Math II, Chemistry, DSA, Electronics', marks: 'SGPA: 8.9' },
